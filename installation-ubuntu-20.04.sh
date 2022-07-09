@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "This script installs a new BookStack instance on a fresh Ubuntu 22.04 server."
+echo "This script installs a new Knowingly KMS App instance on a fresh Ubuntu 22.04 server."
 echo "This script does not ensure system security."
 echo ""
 
@@ -94,7 +94,7 @@ function run_database_setup() {
 # Download BookStack
 function run_bookstack_download() {
   cd /var/www || exit
-  git clone https://github.com/BookStackApp/BookStack.git --branch release --single-branch bookstack
+  git clone https://github.com/STORMWOLF1/knowingly.git --branch main --single-branch bookstack
 }
 
 # Install composer
@@ -121,7 +121,7 @@ function run_install_composer() {
 function run_install_bookstack_composer_deps() {
   cd "$BOOKSTACK_DIR" || exit
   export COMPOSER_ALLOW_SUPERUSER=1
-  php /usr/local/bin/composer install --no-dev --no-plugins
+  # php /usr/local/bin/composer install --no-dev --no-plugins
 }
 
 # Copy and update BookStack environment variables
