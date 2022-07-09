@@ -38,13 +38,17 @@ mysql -u root --execute="GRANT ALL ON bookstack.* TO 'bookstack'@'localhost';FLU
 
 # Download BookStack
 cd /var/www || exit
-export DEBIAN_FRONTEND=dialog
-git clone https://github.com/STORMWOLF1/knowingly.git --branch main --single-branch bookstack
+echo ""
+printf "Enter the username for github\n"
+read -r GITUSER
+echo ""
+printf "Enter the password for github\n"
+read -r GITKEY
+git clone https://$GITUSER:$GITKEY@github.com/STORMWOLF1/knowingly.git --branch main --single-branch bookstack
 BOOKSTACK_DIR="/var/www/bookstack"
 cd $BOOKSTACK_DIR || exit
 
 # Install composer
-export DEBIAN_FRONTEND=noninteractive
 EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
