@@ -44,7 +44,7 @@ read -r GITUSER
 echo ""
 printf "Enter the password for github\n"
 read -r GITKEY
-git clone https://$GITUSER:$GITKEY@github.com/STORMWOLF1/knowingly.git --branch main --single-branch bookstack
+git clone https://$GITUSER:$GITKEY@github.com/STORMWOLF1/knowingly.git --branch phpword_integration --single-branch bookstack
 BOOKSTACK_DIR="/var/www/bookstack"
 cd $BOOKSTACK_DIR || exit
 
@@ -81,6 +81,8 @@ sed -i.bak "s/DB_PASSWORD=.*\$/DB_PASSWORD=$DB_PASS/" .env
 php artisan key:generate --no-interaction --force
 # Migrate the databases
 php artisan migrate --no-interaction --force
+# Rebuild search database
+php artisan bookstack:regenerate-search --no-interaction --force
 
 # Set file and folder permissions
 chown www-data:www-data -R bootstrap/cache public/uploads storage && chmod -R 755 bootstrap/cache public/uploads storage
