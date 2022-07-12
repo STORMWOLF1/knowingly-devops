@@ -34,6 +34,7 @@ php7.4-tidy php7.4-xml php7.4-zip php7.4-gd php7.4-mysql mysql-server-8.0 libapa
 DB_PASS="$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13)"
 mysql -u root --execute="DROP DATABASE bookstack;"
 mysql -u root --execute="FLUSH PRIVILEGES;"
+mysql -u root --execute="CREATE USER 'bookstack'@'localhost';"
 mysql -u root --execute="CREATE DATABASE bookstack;"
 mysql -u root --execute="CREATE USER 'bookstack'@'localhost' IDENTIFIED WITH mysql_native_password BY '$DB_PASS';"
 mysql -u root --execute="GRANT ALL ON bookstack.* TO 'bookstack'@'localhost';FLUSH PRIVILEGES;"
