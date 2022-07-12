@@ -82,7 +82,7 @@ php artisan key:generate --no-interaction --force
 # Migrate the databases
 php artisan migrate --no-interaction --force
 # Rebuild search database
-php artisan bookstack:regenerate-search --no-interaction --force
+php artisan bookstack:regenerate-search --no-interaction
 
 # Set file and folder permissions
 chown www-data:www-data -R bootstrap/cache public/uploads storage && chmod -R 755 bootstrap/cache public/uploads storage
