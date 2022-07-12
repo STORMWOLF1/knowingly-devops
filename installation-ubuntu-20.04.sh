@@ -140,7 +140,10 @@ a2ensite bookstack.conf
 # Restart apache to load new config
 systemctl restart apache2
 
+# Test apache config
 apache2ctl configtest
+
+# Running certbot and testing auto-renew
 certbot --apache
 systemctl status certbot.timer
 certbot renew --dry-run
