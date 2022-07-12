@@ -44,7 +44,7 @@ read -r GITUSER
 echo ""
 printf "Enter the password for github\n"
 read -r GITKEY
-git clone https://$GITUSER:$GITKEY@github.com/STORMWOLF1/knowingly.git --branch phpword_integration --single-branch bookstack
+git clone https://$GITUSER:$GITKEY@github.com/STORMWOLF1/knowingly.git --branch main --single-branch bookstack
 BOOKSTACK_DIR="/var/www/bookstack"
 cd $BOOKSTACK_DIR || exit
 
