@@ -88,7 +88,7 @@ php artisan migrate --no-interaction --force
 php artisan bookstack:regenerate-search --no-interaction
 
 # Set file and folder permissions
-chown www-data:www-data -R bootstrap/cache public/uploads storage && chmod -R 755 bootstrap/cache public/uploads storage
+chown www-data:www-data -R bootstrap/cache public/uploads storage .env && chmod -R 755 bootstrap/cache public/uploads storage
 
 # Set up apache
 a2enmod rewrite
